@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>babazada.com</title>
+  <meta name="description" content="Personal site for Hasan Babazada. Projects, publications, and updates." />
+
+  <!-- Social previews -->
+  <meta property="og:title" content="babazada.com" />
+  <meta property="og:description" content="Projects, publications, and updates." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://babazada.com/" />
+
+  <style>
+    :root{
+      --bg: #0b0f19;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --line: rgba(255,255,255,.12);
+      --accent: #7c3aed;   /* violet */
+      --accent2:#22c55e;   /* green */
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1050px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(900px 500px at 85% 20%, rgba(34,197,94,.25), transparent 55%),
+        radial-gradient(900px 600px at 50% 100%, rgba(56,189,248,.12), transparent 55%),
+        var(--bg);
+      line-height:1.45;
+      letter-spacing:.1px;
+    }
+
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.9}
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 10px 4px 24px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:12px;height:12px;border-radius:99px;
+      background: linear-gradient(135deg, var(--accent), #38bdf8);
+      box-shadow: 0 0 0 6px rgba(124,58,237,.10);
+    }
+    .brand small{
+      display:block;
+      font-weight:500;
+      color:var(--muted);
+      margin-top:2px;
+      font-size:12px;
+    }
+
+    .nav{
+      display:flex; gap:14px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .nav a{
+      padding:10px 12px;
+      border:1px solid transparent;
+      border-radius: 999px;
+    }
+    .nav a:hover{
+      border-color: var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top: 10px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .heroMain{
+      padding: 26px 24px 22px;
+      position:relative;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      backdrop-filter: blur(8px);
+    }
+    .pulse{
+      width:8px;height:8px;border-radius:99px;
+      background: var(--accent2);
+      box-shadow: 0 0 0 8px rgba(34,197,94,.14);
+    }
+
+    h1{
+      margin: 14px 0 8px;
+      font-size: clamp(34px, 4.2vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -1px;
+    }
+    .subtitle{
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 60ch;
+      margin: 10px 0 18px;
+    }
+
+    .btnRow{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .btn.primary{
+      border: 1px solid rgba(124,58,237,.45);
+      background: linear-gradient(135deg, rgba(124,58,237,.75), rgba(56,189,248,.55));
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0px)}
+
+    .heroSide{
+      padding: 22px 20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .meta{
+      display:grid;
+      gap:10px;
+    }
+    .metaItem{
+      padding: 12px 12px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .metaItem .k{
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+    .metaItem .v{
+      margin-top:6px;
+      font-weight: 650;
+    }
+
+    .grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .tile{
+      padding: 16px 16px 14px;
+      background: rgba(0,0,0,.14);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .tile:hover{transform: translateY(-2px); background: rgba(255,255,255,.05)}
+    .tile h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: -.2px;
+    }
+    .tile p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      min-height: 42px;
+    }
+    .tag{
+      display:inline-block;
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(255,255,255,.78);
+      background: rgba(124,58,237,.13);
+      border: 1px solid rgba(124,58,237,.25);
+      padding: 6px 8px;
+      border-radius: 999px;
+    }
+
+    footer{
+      margin-top: 22px;
+      padding: 18px 6px 0;
+      color: var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      font-size: 13px;
+    }
+
+    /* responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns: 1fr; }
+      .grid{grid-template-columns: 1fr; }
+      header{flex-direction:column; align-items:flex-start}
+      .nav{flex-wrap:wrap}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <div>
+          babazada.com
+          <small>Personal site · Projects · Publications · Updates</small>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#links">Links</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card heroMain">
+        <div class="pill"><span class="pulse" aria-hidden="true"></span> Site is live · More content coming soon</div>
+        <h1>Hasan Babazada</h1>
+        <p class="subtitle">
+          This is a lightweight landing page while I build out the full site.
+          You can use it as a hub for publications, projects, talks, and software.
+        </p>
+
+        <div class="btnRow" id="links">
+          <a class="btn primary" href="https://github.com/gasan4ik" target="_blank" rel="noreferrer">
+            GitHub ↗
+          </a>
+          <a class="btn" href="#" onclick="alert('Add your CV link later (PDF or Google Drive).'); return false;">
+            CV (soon)
+          </a>
+          <a class="btn" href="mailto:hello@babazada.com" title="This will work once you set up email for the domain.">
+            Contact (email)
+          </a>
+        </div>
+
+        <div style="margin-top:16px; color: var(--muted); font-size: 13px;">
+          Tip: once you set up domain email later, update the contact address above.
+          For now, you can replace it with a Gmail/Proton address.
+        </div>
+      </div>
+
+      <aside class="card heroSide">
+        <div class="meta">
+          <div class="metaItem">
+            <div class="k">Currently</div>
+            <div class="v">Building a clean public profile & project hub</div>
+          </div>
+          <div class="metaItem">
+            <div class="k">Hosting</div>
+            <div class="v">GitHub Pages · Custom domain enabled</div>
+          </div>
+          <div class="metaItem">
+            <div class="k">Next additions</div>
+            <div class="v">Publications · Talks · Software · Blog</div>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid var(--line); padding-top:14px; color:var(--muted); font-size:13px;">
+          <div style="font-family:var(--mono); color:rgba(255,255,255,.78);">status</div>
+          <div>✅ DNS connected · ✅ HTTPS certificate active</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid" id="work">
+      <div class="tile">
+        <h3>Research</h3>
+        <p>Short summary of your focus areas. Add links to papers and ongoing projects.</p>
+        <span class="tag">/research</span>
+      </div>
+      <div class="tile">
+        <h3>Publications</h3>
+        <p>Curated list with PDFs, DOIs, and featured highlights.</p>
+        <span class="tag">/publications</span>
+      </div>
+      <div class="tile">
+        <h3>Software & Data</h3>
+        <p>GitHub repos, tools, and datasets you want people to reuse.</p>
+        <span class="tag">/code</span>
+      </div>
+    </section>
+
+    <section style="margin-top:16px" id="about">
+      <div class="card" style="padding: 18px 18px 16px;">
+        <h2 style="margin:0 0 8px; letter-spacing:-.2px;">About</h2>
+        <p style="margin:0; color:var(--muted); font-size:14px;">
+          Replace this section with a compact bio (2–4 sentences). You can also add a headshot later,
+          or keep it text-only for a clean, fast page.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> babazada.com</div>
+      <div style="font-family:var(--mono);">built with plain HTML · hosted on GitHub Pages</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
